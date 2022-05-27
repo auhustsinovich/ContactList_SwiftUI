@@ -23,6 +23,7 @@ struct AdditionalInfoView: View {
             }
             
             RowSectionView(icon: "phone", info: contact.phoneNumber)
+            RowSectionView(icon: "tray", info: contact.email)
         }
         .navigationBarTitle(contact.fullname)
     }
