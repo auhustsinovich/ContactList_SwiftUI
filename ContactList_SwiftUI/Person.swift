@@ -7,12 +7,13 @@
 
 import Foundation
 
-struct Person {
-    
+struct Person: Identifiable {
+
     let name: String
     let surname: String
     let email: String
     let phoneNumber: String
+    let id: Int
     
     var fullname: String {
         "\(name) \(surname)"
@@ -29,19 +30,13 @@ extension Person {
         let emails = DataManager.shared.emails.shuffled()
         let phones = DataManager.shared.phones.shuffled()
         
-        let iterationCount = min(
-            names.count,
-            surnames.count,
-            emails.count,
-            phones.count
-        )
-        
-        for index in 0..<iterationCount {
+        for index in 0..<names.count{
             let person = Person(
                 name: names[index],
                 surname: surnames[index],
                 email: emails[index],
-                phoneNumber: phones[index]
+                phoneNumber: phones[index],
+                id: index + 1
             )
             
             persons.append(person)
